@@ -7,23 +7,20 @@ using UnityEngine.UI;
 public class NewBehaviourScript : MonoBehaviour
 {
     [SerializeField] public float vida;
-
     public event EventHandler MuerteJugador;
-
     public float velocidad = 5f;
     public Slider barraVida;
     public float fuerzaSalto = 10f;
     public float longitudRaycast = 0.1f;
     public LayerMask capaSuelo;
-
     [SerializeField] private float tiempoPerdidaControl;
-
     private bool enSuelo;
     private bool sePuedeMover = true;
     [SerializeField] private Vector2 velocidadRebote = new Vector2(2f, 5f); // Menos fuerza de rebote
     private Rigidbody2D rb;
-
     public Animator animator;
+    public Color colorOriginal;
+    private SpriteRenderer spriteRenderer;  
 
     void Start()
     {
@@ -36,6 +33,17 @@ public class NewBehaviourScript : MonoBehaviour
         else
         {
             Debug.LogError("La barra de vida no está asignada.");
+        }
+        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        if (spriteRenderer != null)
+        {
+            colorOriginal = spriteRenderer.color;
+        }
+        else
+        {
+            Debug.LogWarning("SpriteRenderer no encontrado en el GameObject.");
         }
     }
 
@@ -93,11 +101,25 @@ public class NewBehaviourScript : MonoBehaviour
         gameObject.SetActive(false);  // Desactiva el jugador
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+   void OnCollisionEnter2D(Collision2D collision)
     {
+        // Verifica si el objeto choca con un enemigo
         if (collision.gameObject.CompareTag("Enemy")) 
         {
+            CambiarColorRojoTemporalmente();
             TomarDaño(15, collision.transform.position);
+        }
+        
+        // Si el objeto choca con una bala
+        if (collision.gameObject.CompareTag("Bala"))
+        {
+            // Cambia el color del objeto a rojo al recibir daño de la bala
+            
+            TomarDañoPorDisparo(20);
+            CambiarColorRojoTemporalmente();
+
+            // Destruye la bala después del impacto
+            Destroy(collision.gameObject);
         }
     }
 
@@ -114,8 +136,37 @@ public class NewBehaviourScript : MonoBehaviour
         }
     }
 
+    public void TomarDañoPorDisparo(float daño)
+    {
+        vida -= daño;
+        if (vida < 1)
+        {
+            Destroy(gameObject);// Llama a la función de rebote al recibir daño
+        }
+    }
+
     public void Rebote(Vector2 puntoGolpe)
     {
         rb.velocity = new Vector2(-velocidadRebote.x * (transform.position.x - puntoGolpe.x), velocidadRebote.y); // Reduce la cantidad de rebote
+    }
+
+    private void CambiarColorRojoTemporalmente()
+    {
+        // Cambia el color del objeto a rojo
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red;
+            
+            // Restaura el color original después de 0.2 segundos
+            Invoke("RestaurarColorOriginal", 0.2f);
+        }
+    }
+
+    private void RestaurarColorOriginal()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = colorOriginal;
+        }
     }
 }

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="1">
  <tileset firstgid="1" source="suelo padimento.tsx"/>
- <imagelayer id="2" name="Cielo" offsetx="15" offsety="220" repeatx="1">
-  <image source="../Nivel_1/ASSETS/free-city-backgrounds-pixel-art/city 3/1.png" width="576" height="324"/>
+ <imagelayer id="2" name="Cielo" offsetx="19" offsety="220" parallaxx="0.2" repeatx="1">
+  <image source="../../../ASSETS/free-city-backgrounds-pixel-art/city 6/1.png" width="576" height="324"/>
  </imagelayer>
- <imagelayer id="3" name="Ciudad" offsetx="15" offsety="220" repeatx="1">
-  <image source="../Nivel_1/ASSETS/free-city-backgrounds-pixel-art/city 3/2.png" width="576" height="324"/>
+ <imagelayer id="4" name="Ciudad_Fondo_2" offsetx="-3" offsety="223" parallaxx="0.3" repeatx="1">
+  <image source="../../../ASSETS/free-city-backgrounds-pixel-art/city 6/2.png" width="576" height="324"/>
  </imagelayer>
- <imagelayer id="4" name="ciudad_oscura" offsetx="-3" offsety="223" repeatx="1">
-  <image source="../Nivel_1/ASSETS/free-city-backgrounds-pixel-art/city 3/4.png" width="576" height="324"/>
+ <imagelayer id="6" name="Ciudad_Fondo_1" offsetx="558.889" offsety="253.862" parallaxx="0.4">
+  <image source="../../../ASSETS/free-city-backgrounds-pixel-art/city 6/3.png" width="576" height="324"/>
+ </imagelayer>
+ <imagelayer id="7" name="Ciudad_Fondo_0" offsetx="1.96792" offsety="210.567" parallaxx="0.5">
+  <image source="../../../ASSETS/free-city-backgrounds-pixel-art/city 6/5.png" width="576" height="324"/>
+ </imagelayer>
+ <imagelayer id="3" name="Ciudad_Frente" offsetx="62.2301" offsety="235.743" parallaxx="0.8" repeatx="1">
+  <image source="../../../ASSETS/free-city-backgrounds-pixel-art/city 6/6.png" width="576" height="324"/>
  </imagelayer>
  <layer id="1" name="Capa de patrones 1" width="60" height="20">
   <data encoding="csv">
