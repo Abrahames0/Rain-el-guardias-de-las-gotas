@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class NewBehaviourScript : MonoBehaviour
 {
     [SerializeField] public float vida;
-    public float vidaMaxima = 100f; // Nueva variable para el valor máximo de vida
+    public float vidaMaxima = 100f;
     public event EventHandler MuerteJugador;
     public float velocidad = 5f;
     public Slider barraVida;
     public float fuerzaSalto = 10f;
+    [SerializeField] private AudioClip saltoSonido;
     public float longitudRaycast = 0.1f;
     public LayerMask capaSuelo;
     [SerializeField] private float tiempoPerdidaControl;
@@ -84,6 +85,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (enSuelo && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
+            ControladorSonido.Instance.EjecutarSonido(saltoSonido);
         }
 
         animator.SetBool("ensuelo", enSuelo);
