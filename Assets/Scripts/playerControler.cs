@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
     [SerializeField] public float vida;
+    public float vidaMaxima = 100f; // Nueva variable para el valor máximo de vida
     public event EventHandler MuerteJugador;
     public float velocidad = 5f;
     public Slider barraVida;
@@ -16,16 +16,15 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float tiempoPerdidaControl;
     private bool enSuelo;
     private bool sePuedeMover = true;
-    [SerializeField] private Vector2 velocidadRebote = new Vector2(2f, 5f); // Menos fuerza de rebote
+    [SerializeField] private Vector2 velocidadRebote = new Vector2(2f, 5f);
     private Rigidbody2D rb;
     public Animator animator;
     public Color colorOriginal;
-    private SpriteRenderer spriteRenderer;  
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         if (barraVida != null)
         {
             Debug.Log("Barra de vida asignada: " + barraVida.gameObject.name);
@@ -36,7 +35,6 @@ public class NewBehaviourScript : MonoBehaviour
         }
         
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
         if (spriteRenderer != null)
         {
             colorOriginal = spriteRenderer.color;
@@ -53,8 +51,6 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Debug.Log("El jugador ha muerto. Evento MuerteJugador invocado.");
             MuerteJugador?.Invoke(this, EventArgs.Empty);
-
-            // Espera un segundo antes de desactivar el jugador
             StartCoroutine(DesactivarJugadorConRetraso());
         }
 
@@ -68,7 +64,6 @@ public class NewBehaviourScript : MonoBehaviour
         }
 
         float velocidadX = Input.GetAxis("Horizontal") * Time.deltaTime * velocidad;
-
         animator.SetFloat("movement", velocidadX * velocidad);
 
         if (velocidadX < 0)
@@ -92,33 +87,31 @@ public class NewBehaviourScript : MonoBehaviour
         }
 
         animator.SetBool("ensuelo", enSuelo);
+
+        // Prueba de recuperación de vida al presionar la tecla R
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RecuperarVida(20f); // Recupera 20 puntos de vida
+        }
     }
 
     IEnumerator DesactivarJugadorConRetraso()
     {
-        // Espera un segundo antes de desactivar el jugador para asegurar que el evento se maneje correctamente
         yield return new WaitForSeconds(1f);
-        gameObject.SetActive(false);  // Desactiva el jugador
+        gameObject.SetActive(false);
     }
 
-   void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        // Verifica si el objeto choca con un enemigo
-        if (collision.gameObject.CompareTag("Enemy")) 
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             CambiarColorRojoTemporalmente();
             TomarDaño(15, collision.transform.position);
         }
-        
-        // Si el objeto choca con una bala
         if (collision.gameObject.CompareTag("Bala"))
         {
-            // Cambia el color del objeto a rojo al recibir daño de la bala
-            
             TomarDañoPorDisparo(20);
             CambiarColorRojoTemporalmente();
-
-            // Destruye la bala después del impacto
             Destroy(collision.gameObject);
         }
     }
@@ -128,7 +121,7 @@ public class NewBehaviourScript : MonoBehaviour
         vida -= daño;
         if (vida > 0)
         {
-            Rebote(posicion); // Llama a la función de rebote al recibir daño
+            Rebote(posicion);
         }
         else
         {
@@ -141,23 +134,20 @@ public class NewBehaviourScript : MonoBehaviour
         vida -= daño;
         if (vida < 1)
         {
-            Destroy(gameObject);// Llama a la función de rebote al recibir daño
+            Destroy(gameObject);
         }
     }
 
     public void Rebote(Vector2 puntoGolpe)
     {
-        rb.velocity = new Vector2(-velocidadRebote.x * (transform.position.x - puntoGolpe.x), velocidadRebote.y); // Reduce la cantidad de rebote
+        rb.velocity = new Vector2(-velocidadRebote.x * (transform.position.x - puntoGolpe.x), velocidadRebote.y);
     }
 
     private void CambiarColorRojoTemporalmente()
     {
-        // Cambia el color del objeto a rojo
         if (spriteRenderer != null)
         {
             spriteRenderer.color = Color.red;
-            
-            // Restaura el color original después de 0.2 segundos
             Invoke("RestaurarColorOriginal", 0.2f);
         }
     }
@@ -169,4 +159,25 @@ public class NewBehaviourScript : MonoBehaviour
             spriteRenderer.color = colorOriginal;
         }
     }
+
+    public void RecuperarVida(float cantidad)
+    {
+        vida += cantidad;
+        if (vida > vidaMaxima)
+        {
+            vida = vidaMaxima;
+        }
+        Debug.Log("Vida recuperada: " + cantidad);
+    }
+
+    public void TomarDañoContinuo(float daño)
+{
+    vida -= daño;
+    if (vida <= 0)
+    {
+        Debug.Log("El jugador ha muerto por daño continuo.");
+        MuerteJugador?.Invoke(this, EventArgs.Empty);
+        StartCoroutine(DesactivarJugadorConRetraso());
+    }
+}
 }

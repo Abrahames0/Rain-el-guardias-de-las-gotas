@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fondo nivel final
+    uniqueID: 1424841725
+    locked: 0
   - name: Fondo
     uniqueID: 2757937909
     locked: 0
