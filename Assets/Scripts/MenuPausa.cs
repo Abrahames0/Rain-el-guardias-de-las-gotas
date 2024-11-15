@@ -13,6 +13,7 @@ public class MenuPausa : MonoBehaviour
 
     private void Update(){
         if(Input.GetKeyDown(KeyCode.Escape)){
+            Debug.Log("Juego Pausado " + juegoPausado.ToString());
             if(juegoPausado){
                 Reanular();
             }
@@ -21,6 +22,10 @@ public class MenuPausa : MonoBehaviour
                 Debug.Log("Pausa");
             }
         }
+    }
+
+    public void ClicPausa() {
+        Debug.Log("Nueva Pasa");
     }
 
     public void Pausa(){

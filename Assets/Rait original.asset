@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559d300bba052d848adba54c426f3e99, type: 3}
+  m_Name: Rait original
+  m_EditorClassIdentifier: 
+  personajeJugable: {fileID: 1689049581395230387, guid: f556b7a7136545f44bc013f559e412ce, type: 3}
+  imagen: {fileID: -605969042, guid: 55e929f7e83a61c44a5dd9b9833f8b14, type: 3}
+  nombre: 'Raint '

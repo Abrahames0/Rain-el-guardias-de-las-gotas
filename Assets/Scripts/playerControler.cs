@@ -26,13 +26,18 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (barraVida != null)
+
+        if (barraVida == null)
         {
-            Debug.Log("Barra de vida asignada: " + barraVida.gameObject.name);
-        }
-        else
-        {
-            Debug.LogError("La barra de vida no está asignada.");
+            barraVida = GameObject.FindObjectOfType<Slider>(); // Busca un slider en la escena
+            if (barraVida == null)
+            {
+                Debug.LogError("No se encontró ninguna barra de vida en la escena.");
+            }
+            else
+            {
+                Debug.Log("Barra de vida asignada automáticamente: " + barraVida.gameObject.name);
+            }
         }
         
         spriteRenderer = GetComponent<SpriteRenderer>();
