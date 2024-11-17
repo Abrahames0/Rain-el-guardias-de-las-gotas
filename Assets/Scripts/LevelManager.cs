@@ -21,6 +21,15 @@ public class LevelManager : MonoBehaviour
         Debug.Log("inciando jeugo");
         SceneManager.LoadScene(1);    
     }
+    public void BotonReglas(){
+        Debug.Log("Reglas Juego");
+        SceneManager.LoadScene(6);    
+    }
+
+    public void BotonInicio(){
+        Debug.Log("Inicio Juego");
+        SceneManager.LoadScene(0);    
+    }
 
     public void BotonSalir(){
         Debug.Log("Salio del juego");
