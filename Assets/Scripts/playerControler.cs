@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class NewBehaviourScript : MonoBehaviour
     public Animator animator;
     public Color colorOriginal;
     private SpriteRenderer spriteRenderer;  
+    private bool dentroDelFuego = false;
 
     void Start()
     {
@@ -53,6 +55,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Debug.Log("El jugador ha muerto. Evento MuerteJugador invocado.");
             MuerteJugador?.Invoke(this, EventArgs.Empty);
+            SceneManager.LoadScene("menuGameOver");
 
             // Espera un segundo antes de desactivar el jugador
             StartCoroutine(DesactivarJugadorConRetraso());
@@ -121,6 +124,12 @@ public class NewBehaviourScript : MonoBehaviour
             // Destruye la bala después del impacto
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Limite"))
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("menuGameOver");
+        }
     }
 
     public void TomarDaño(float daño, Vector2 posicion)
@@ -130,7 +139,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Rebote(posicion); // Llama a la función de rebote al recibir daño
         }
-        else
+        else if (vida < 1)
         {
             Physics2D.IgnoreLayerCollision(6, 7, true);
         }
@@ -150,7 +159,7 @@ public class NewBehaviourScript : MonoBehaviour
         rb.velocity = new Vector2(-velocidadRebote.x * (transform.position.x - puntoGolpe.x), velocidadRebote.y); // Reduce la cantidad de rebote
     }
 
-    private void CambiarColorRojoTemporalmente()
+    public void CambiarColorRojoTemporalmente()
     {
         // Cambia el color del objeto a rojo
         if (spriteRenderer != null)
@@ -162,11 +171,12 @@ public class NewBehaviourScript : MonoBehaviour
         }
     }
 
-    private void RestaurarColorOriginal()
+    public void RestaurarColorOriginal()
     {
         if (spriteRenderer != null)
         {
             spriteRenderer.color = colorOriginal;
         }
     }
+    
 }

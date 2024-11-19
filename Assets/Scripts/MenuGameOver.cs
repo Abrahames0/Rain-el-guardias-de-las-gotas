@@ -12,7 +12,7 @@ public class MenuGameOver : MonoBehaviour
     private void Start()
     {
         // Encuentra el objeto con el tag "Player"
-        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<NewBehaviourScript>();
+        jugador = GameObject.FindGameObjectWithTag("Player")?.GetComponent<NewBehaviourScript>();
         
         if (jugador != null)
         {
@@ -23,12 +23,13 @@ public class MenuGameOver : MonoBehaviour
         else
         {
             Debug.LogError("No se encontró el jugador.");
+            ActivarMenu(null, EventArgs.Empty); // Activa el menú de Game Over si no se encuentra el jugador
         }
 
         // Verifica que el menú de Game Over esté asignado
         if (menuGameOver != null)
         {
-            menuGameOver.SetActive(false);  // Asegúrate de que esté desactivado al principio
+            // menuGameOver.SetActive(false);  // Asegúrate de que esté desactivado al principio
             Debug.Log("Menú de Game Over asignado correctamente.");
         }
         else
@@ -40,17 +41,19 @@ public class MenuGameOver : MonoBehaviour
     private void ActivarMenu(object sender, EventArgs e)
     {
         Debug.Log("Activando el menú de Game Over.");
-        menuGameOver.SetActive(true); // Activa el menú de Game Over
+        // menuGameOver.SetActive(true);
+        SceneManager.LoadScene(3); // Activa el menú de Game Over
     }
 
     public void Reiniciar()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reinicia la escena actual
+        Debug.Log("PRESIONASTE EL BOTON REINICIAR");
+        SceneManager.LoadScene(1); // Reinicia la escena actual
     }
 
     public void MenuInicial(string nombre)
     {
-        SceneManager.LoadScene(nombre); // Carga la escena del menú principal
+        SceneManager.LoadScene(0); // Carga la escena del menú principal
     }
 
     public void Salir()
