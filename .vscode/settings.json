@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Rain-el-guardias-de-las-gotas.sln"
+    "dotnet.defaultSolution": "game2Example.sln"
 }
