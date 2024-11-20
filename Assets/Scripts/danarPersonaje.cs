@@ -1,25 +1,25 @@
-/* using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemigo : MonoBehaviour
 {
     [SerializeField] private float velocidad;
-    [SerializeField] private Transform controladorSuelo;
+    // [SerializeField] private Transform controladorSuelo;
     [SerializeField] private float distancia;
     [SerializeField] private bool movimientoDerecha;
-    [SerializeField] private float dañoAlJugador = 10f;  // Daño que el enemigo inflige al jugador
+    [SerializeField] private float danoAlJugador;  // Daño que el enemigo inflige al jugador
 
     private void Update()
     {
         // Movimiento del enemigo utilizando Raycast para detectar el suelo
-        RaycastHit2D informacionSuelo = Physics2D.Raycast(controladorSuelo.position, Vector2.down, distancia);
+        // RaycastHit2D informacionSuelo = Physics2D.Raycast(controladorSuelo.position, Vector2.down, distancia);
 
-        if (!informacionSuelo)
-        {
-            // Girar enemigo si no hay suelo
-            Girar();
-        }
+        // if (!informacionSuelo)
+        // {
+        //     // Girar enemigo si no hay suelo
+        //     Girar();
+        // }
         
         // Movimiento constante del enemigo
         transform.Translate(Vector2.right * velocidad * Time.deltaTime);
@@ -40,16 +40,43 @@ public class Enemigo : MonoBehaviour
             NewBehaviourScript jugador = other.gameObject.GetComponent<NewBehaviourScript>();
             if (jugador != null)
             {
-                // Llama al método TomarDaño pasando el daño y la posición del enemigo
-                jugador.TomarDaño(dañoAlJugador, transform.position);
+                // Cambia el color del jugador al recibir daño
+                jugador.CambiarColorRojoTemporalmente();
+                jugador.TomarDaño(danoAlJugador, transform.position);
             }
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnCollisionStay2D(Collision2D other)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(controladorSuelo.position, controladorSuelo.position + Vector3.down * distancia);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            NewBehaviourScript jugador = other.gameObject.GetComponent<NewBehaviourScript>();
+            if (jugador != null)
+            {
+                // Aplica daño continuo mientras el jugador esté en contacto con el fuego
+                jugador.TomarDaño(danoAlJugador * Time.deltaTime, transform.position);
+                jugador.CambiarColorRojoTemporalmente();
+            }
+        }
     }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // Restaura el color original cuando el jugador sale del fuego
+            NewBehaviourScript jugador = other.gameObject.GetComponent<NewBehaviourScript>();
+            if (jugador != null)
+            {
+                jugador.RestaurarColorOriginal();
+            }
+        }
+    }
+
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawLine(controladorSuelo.position, controladorSuelo.position + Vector3.down * distancia);
+    // }
 }
- */

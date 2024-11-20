@@ -13,7 +13,7 @@ public class Vida : MonoBehaviour
             NewBehaviourScript jugador = other.GetComponent<NewBehaviourScript>();
             if (jugador != null)
             {
-                jugador.RecuperarVida(cantidadRecuperacion);
+                // jugador.RecuperarVida(cantidadRecuperacion);
                 Destroy(gameObject);
             }
         }

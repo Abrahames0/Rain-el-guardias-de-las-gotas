@@ -24,6 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/NivelFinal.unity
     guid: 7964fe391af8ff44a8a5fc3777ea51e4
   - enabled: 1
+    path: Assets/Scenes/Nivel final.unity
+    guid: f1b6cb7d348b5574983e754cfa075319
+  - enabled: 1
     path: Assets/Scenes/PantallaReglas.unity
     guid: ace1b8b6dbeba254d93ab9ce1de1a683
+  - enabled: 1
+    path: Assets/Scenes/MenuGameOver.unity
+    guid: 950bb28893db31e4e9f858f06ba05f90
   m_configObjects: {}

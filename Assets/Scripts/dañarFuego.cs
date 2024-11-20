@@ -1,8 +1,8 @@
-/* using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+//using UnityEngine;
 
-public class Fuego : MonoBehaviour
+/* public class Fuego : MonoBehaviour
 {
     [SerializeField] private float dañoPorSegundo = 10f;  // Daño que el fuego inflige al jugador cada segundo
 
@@ -44,4 +44,4 @@ public class Fuego : MonoBehaviour
         }
     }
 }
- */
+*/
