@@ -20,17 +20,29 @@ public class patrullajeTuberia : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    // private void Update()
+    // {
+    //     RaycastHit2D informacionSuelo = Physics2D.Raycast(controladorSuelo.position, Vector2.down, distancia);
+
+    //     rb.velocity = new Vector2(velocidad, rb.velocity.y);
+
+    //     if (informacionSuelo == false)
+    //     {
+    //         // Girar
+    //         Girar();
+    //     }
+    // }
+
+    private void FixedUpdate()
     {
         RaycastHit2D informacionSuelo = Physics2D.Raycast(controladorSuelo.position, Vector2.down, distancia);
 
         rb.velocity = new Vector2(velocidad, rb.velocity.y);
 
-        if (informacionSuelo == false)
-        {
-            // Girar
+        if(informacionSuelo == false){
             Girar();
         }
+
     }
 
     private void Girar()

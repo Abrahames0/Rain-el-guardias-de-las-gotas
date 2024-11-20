@@ -15,7 +15,7 @@ public class ZonaToxica : MonoBehaviour
             if (jugador != null)
             {
                 jugadorDentro = true;
-                StartCoroutine(AplicarDañoContinuo());
+                // StartCoroutine(AplicarDañoContinuo());
             }
         }
     }
@@ -25,16 +25,16 @@ public class ZonaToxica : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadorDentro = false;
-            StopCoroutine(AplicarDañoContinuo());
+            // StopCoroutine(AplicarDañoContinuo());
         }
     }
 
-    IEnumerator AplicarDañoContinuo()
-    {
-        while (jugadorDentro)
-        {
-            jugador.TomarDañoContinuo(dañoPorSegundo * Time.deltaTime);
-            yield return null; // Espera un frame antes de continuar
-        }
-    }
+    // IEnumerator AplicarDañoContinuo()
+    // {
+    //     while (jugadorDentro)
+    //     {
+    //         jugador.TomarDañoContinuo(dañoPorSegundo * Time.deltaTime);
+    //         yield return null; // Espera un frame antes de continuar
+    //     }
+    // }
 }
