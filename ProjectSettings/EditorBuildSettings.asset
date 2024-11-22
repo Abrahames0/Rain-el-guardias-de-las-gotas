@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 08bb8d42f7615474197f8de740876522
   - enabled: 1
-    path: Assets/Scenes/SelecionJugador.unity
+    path: Assets/Scenes/selecionjugador.unity
     guid: 691240c2ee893134d8485df73ff89900
   - enabled: 1
     path: Assets/Scenes/MenuNiveles.unity
@@ -18,14 +18,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Nivel 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/MenuNivelesNivel2.unity
+    guid: bac8d08183d94a749bb49706cb4b0733
+  - enabled: 1
     path: Assets/Scenes/Nivel 2.unity
     guid: 8aac4f0df66821142858bd7e433207c8
+  - enabled: 1
+    path: Assets/Scenes/MenuNivelesNivel3.unity
+    guid: 653accb92bba0b6459142b5496ca5d6f
   - enabled: 1
     path: Assets/Scenes/NivelFinal.unity
     guid: 7964fe391af8ff44a8a5fc3777ea51e4
   - enabled: 1
-    path: Assets/Scenes/Nivel final.unity
-    guid: f1b6cb7d348b5574983e754cfa075319
+    path: Assets/Scenes/Creditos finales.unity
+    guid: 9e4917f2ab5cab84183f7efe8942bb8a
   - enabled: 1
     path: Assets/Scenes/PantallaReglas.unity
     guid: ace1b8b6dbeba254d93ab9ce1de1a683

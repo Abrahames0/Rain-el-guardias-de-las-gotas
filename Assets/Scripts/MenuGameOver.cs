@@ -64,4 +64,9 @@ public class MenuGameOver : MonoBehaviour
         Application.Quit(); // Cierra el juego
         #endif
     }
+
+    internal static void SetActive(bool v)
+    {
+        throw new NotImplementedException();
+    }
 }

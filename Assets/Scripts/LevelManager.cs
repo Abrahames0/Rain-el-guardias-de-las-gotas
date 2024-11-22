@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     }
     public void BotonReglas(){
         Debug.Log("Reglas Juego");
-        SceneManager.LoadScene(6);    
+        SceneManager.LoadScene(7);    
     }
 
     public void BotonInicio(){

@@ -10,6 +10,12 @@ public class MenuPausa : MonoBehaviour
     [SerializeField] private GameObject pantallaAjustes;
 
     private bool juegoPausado = false;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = FindObjectOfType<MusicManager>().GetComponent<AudioSource>();
+    }
 
     private void Update(){
         if(Input.GetKeyDown(KeyCode.Escape)){
@@ -33,6 +39,10 @@ public class MenuPausa : MonoBehaviour
         Time.timeScale = 0f;
         botonPausa.SetActive(false);
         menuPausa.SetActive(true);
+        if (audioSource != null)
+        {
+            audioSource.Pause();
+        }
     }
 
     public void Reanular(){
@@ -41,6 +51,10 @@ public class MenuPausa : MonoBehaviour
         botonPausa.SetActive(true);
         menuPausa.SetActive(false);
         pantallaAjustes.SetActive(false);
+        if (audioSource != null)
+        {
+            audioSource.UnPause();
+        }
     }
 
     public void Reiniciar(){

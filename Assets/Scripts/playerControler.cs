@@ -99,12 +99,6 @@ public class NewBehaviourScript : MonoBehaviour
         }
 
         animator.SetBool("ensuelo", enSuelo);
-
-        /* // Prueba de recuperación de vida al presionar la tecla R
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RecuperarVida(20f); // Recupera 20 puntos de vida
-        } */
     }
 
     IEnumerator DesactivarJugadorConRetraso()
