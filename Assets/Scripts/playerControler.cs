@@ -146,7 +146,7 @@ public class NewBehaviourScript : MonoBehaviour
         vida -= daño;
         if (vida < 1)
         {
-            Destroy(gameObject);
+              Physics2D.IgnoreLayerCollision(6, 7, true);
         }
     }
 

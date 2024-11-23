@@ -12,6 +12,8 @@ public class DisparoEnemigo : MonoBehaviour
     public float tiempoEntreDisparo;
     public float tiempoUltimoDisparo;
     public float tiempoEsperaDisparo;
+    
+   
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class DisparoEnemigo : MonoBehaviour
     void Update()
     {
         jugadorRango = Physics2D.Raycast(controladorDisparo.position, transform.right, distanciaLinea, capaJugador);
+        
 
         if(jugadorRango){
             if(Time.time > tiempoEntreDisparo + tiempoUltimoDisparo)
@@ -42,5 +45,6 @@ public class DisparoEnemigo : MonoBehaviour
     private void Disparar()
     {
         Instantiate(balaEnemigo, controladorDisparo.position, controladorDisparo.rotation);
+        
     }
 }

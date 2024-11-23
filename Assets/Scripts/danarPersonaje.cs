@@ -9,6 +9,7 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private float distancia;
     [SerializeField] private bool movimientoDerecha;
     [SerializeField] private float danoAlJugador;  // Daño que el enemigo inflige al jugador
+    [SerializeField] private AudioClip sonidoDaño; 
 
     private void Update()
     {
@@ -57,6 +58,7 @@ public class Enemigo : MonoBehaviour
                 // Aplica daño continuo mientras el jugador esté en contacto con el fuego
                 jugador.TomarDaño(danoAlJugador * Time.deltaTime, transform.position);
                 jugador.CambiarColorRojoTemporalmente();
+                ControladorSonido.Instance.EjecutarSonido(sonidoDaño);
             }
         }
     }
