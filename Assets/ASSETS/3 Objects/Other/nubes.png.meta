@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8fdf8f1e911d8b84c94cb59eae7a3c41
+guid: 8fb0c27883951c24e984ccc6e1b0e774
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 4_0
+      name: nubes_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 49
-        height: 88
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d95b0b6ddc5aa4444b0bdaa91927059f
-      internalID: 1069781441
+      spriteID: 1a55067c194fd8942b666cb7e9bd6e6c
+      internalID: -497181640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nubes_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d95d4d8e89355b40ade9f828cf0fd49
+      internalID: -1015771890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nubes_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c353b771596e29b48a08b0d322e31ff4
+      internalID: -519758165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nubes_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067a9d8be0243124983def557254ac0f
+      internalID: 914304692
       vertices: []
       indices: 
       edges: []
@@ -120,7 +183,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b84a57903d0907f409ceeb3211eb479a
+    spriteID: ae253695c294db845af60dcb115e2590
     internalID: 0
     vertices: []
     indices: 
@@ -128,7 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      4_0: 1069781441
+      nubes_0: -497181640
+      nubes_1: -1015771890
+      nubes_2: -519758165
+      nubes_3: 914304692
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
