@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene0to2And6Clip: {fileID: 8300000, guid: f734bc05d4e6ae5418f151836e809f6e, type: 3}
-  scene3Clip: {fileID: 8300000, guid: 3c3c2c766ac09f54793557a368a12481, type: 3}
+  scene3Clip: {fileID: 8300000, guid: 72a7e419a6796fd41ba6422ceaaa2262, type: 3}
   scene4Clip: {fileID: 8300000, guid: b6d2aeb0283ab47469584b23ec619a91, type: 3}
   scene5Clip: {fileID: 8300000, guid: ee256bc257b3f5943a2a48d2391bb219, type: 3}
 --- !u!82 &1278122288
@@ -1480,7 +1480,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f734bc05d4e6ae5418f151836e809f6e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0

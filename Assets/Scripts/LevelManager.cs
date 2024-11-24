@@ -5,17 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("Hola");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log("Hola jku"); 
-    }
 
     public void BotonStart(){
         Debug.Log("inciando jeugo");

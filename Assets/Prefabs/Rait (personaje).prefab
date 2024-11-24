@@ -199,7 +199,7 @@ MonoBehaviour:
   vidaMaxima: 100
   velocidad: 1.3
   barraVida: {fileID: 0}
-  fuerzaSalto: 4.5
+  fuerzaSalto: 5
   saltoSonido: {fileID: 8300000, guid: 2ebf2421dddc15a45b7fc6ae8197b1c0, type: 3}
   longitudRaycast: 0.3
   capaSuelo:

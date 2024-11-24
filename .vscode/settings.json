@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Rain-la-gota.sln"
+    "dotnet.defaultSolution": "game2Example.sln"
 }
