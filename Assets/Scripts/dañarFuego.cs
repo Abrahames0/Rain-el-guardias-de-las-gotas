@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fuego : MonoBehaviour
 {
     [SerializeField] private float dañoPorSegundo = 10f;  // Daño que el fuego inflige al jugador cada segundo
-
+    [SerializeField] private AudioClip dañoPersonaje; 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -27,7 +27,8 @@ public class Fuego : MonoBehaviour
             {
                 // Aplica daño constante mientras el jugador esté en el fuego
                 jugador.TomarDaño(dañoPorSegundo * Time.deltaTime, transform.position);
-                jugador.CambiarColorRojoTemporalmente();  // Mantiene el color rojo mientras esté dentro del fuego
+                jugador.CambiarColorRojoTemporalmente(); 
+                ControladorSonido.Instance.EjecutarSonido(dañoPersonaje); // Mantiene el color rojo mientras esté dentro del fuego
             }
         }
     }
