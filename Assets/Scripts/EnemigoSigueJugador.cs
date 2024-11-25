@@ -4,61 +4,53 @@ using UnityEngine;
 
 public class EnemigoSigueJugador : MonoBehaviour
 {
-     public Transform player; // Asigna aquí el Transform del jugador desde el inspector
+    private Transform player; // Transform del jugador
     public float speed = 2f; // Velocidad de movimiento del enemigo
-    public float followRange = 10f;
-    [SerializeField] private float danoAlJugador;  // Daño que el enemigo inflige al jugador
-    [SerializeField] private AudioClip sonidoDaño; // Distancia máxima para empezar a seguir al jugador
+    public float followRange = 10f; // Distancia máxima para empezar a seguir al jugador
+    [SerializeField] private float danoAlJugador; // Daño que el enemigo inflige al jugador
+    [SerializeField] private AudioClip sonidoDaño;
 
     private void Update()
     {
+        if (player == null) return;
+
         // Calcula la distancia entre el enemigo y el jugador
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         // Si el jugador está dentro del rango, el enemigo lo sigue
         if (distanceToPlayer <= followRange)
         {
-            // Calcula la dirección hacia el jugador
             Vector2 direction = (player.position - transform.position).normalized;
-
-            // Mueve al enemigo hacia el jugador
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
     }
 
-    private void OnDrawGizmosSelected()
+    public void AsignarJugador(Transform jugadorTransform)
     {
-        // Dibuja el rango de seguimiento en la escena para facilitar el ajuste
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, followRange);
+        player = jugadorTransform;
+        Debug.Log("Jugador asignado al enemigo: " + jugadorTransform.name);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
+{
+    // Verifica si el objeto con el que colisionó tiene la etiqueta "Player"
+    if (other.gameObject.CompareTag("Player"))
     {
-        if (other.gameObject.CompareTag("Player"))
+        // Intenta acceder al script del jugador
+        NewBehaviourScript jugador = other.gameObject.GetComponent<NewBehaviourScript>();
+        if (jugador != null)
         {
-            // Accede al script del jugador para aplicarle daño
-            NewBehaviourScript jugador = other.gameObject.GetComponent<NewBehaviourScript>();
-            if (jugador != null)
-            {
-                // Cambia el color del jugador al recibir daño
-                jugador.CambiarColorRojoTemporalmente();
-                jugador.TomarDaño(danoAlJugador, transform.position);
-                ControladorSonido.Instance.EjecutarSonido(sonidoDaño);
-            }
+            // Inflige daño al jugador y cambia su color para indicar el golpe
+            Debug.Log("El enemigo golpeó al jugador.");
+            jugador.CambiarColorRojoTemporalmente();
+            jugador.TomarDaño(danoAlJugador, transform.position);
+            ControladorSonido.Instance.EjecutarSonido(sonidoDaño);
+        }
+        else
+        {
+            Debug.LogError("El script 'NewBehaviourScript' no se encontró en el jugador.");
         }
     }
+}
 
-     private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // Restaura el color original cuando el jugador sale del fuego
-            NewBehaviourScript jugador = other.gameObject.GetComponent<NewBehaviourScript>();
-            if (jugador != null)
-            {
-                jugador.RestaurarColorOriginal();
-            }
-        }
-    }  
 }

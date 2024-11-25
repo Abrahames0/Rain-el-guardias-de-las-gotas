@@ -59,6 +59,10 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Debug.Log("El jugador ha muerto. Evento MuerteJugador invocado.");
             MuerteJugador?.Invoke(this, EventArgs.Empty);
+            
+            // Reiniciar el contador de objetos recolectados
+            ObjetoRecolectable.ReiniciarContador();
+            
             SceneManager.LoadScene("menuGameOver");
 
             // Espera un segundo antes de desactivar el jugador
@@ -101,6 +105,31 @@ public class NewBehaviourScript : MonoBehaviour
         animator.SetBool("ensuelo", enSuelo);
     }
 
+    public void RecuperarVida(float cantidad)
+    {
+        vida += cantidad; // Incrementa la vida del jugador
+        if (vida > vidaMaxima) // No permite que la vida exceda el máximo
+        {
+            vida = vidaMaxima;
+        }
+
+        Debug.Log($"Vida recuperada: {cantidad}. Vida actual: {vida}");
+    }
+
+    public void TomarDañoContinuo(float daño)
+{
+    vida -= daño; // Reduce la vida del jugador
+
+    if (vida <= 0)
+    {
+        vida = 0; // Evita que la vida sea negativa
+        Debug.Log("El jugador ha muerto en la zona tóxica.");
+        // Puedes agregar lógica para manejar la muerte, si no se hace automáticamente
+    }
+
+    Debug.Log($"Vida actual del jugador: {vida}");
+}
+
     IEnumerator DesactivarJugadorConRetraso()
     {
         yield return new WaitForSeconds(1f);
@@ -123,6 +152,9 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Limite"))
         {
+            // Reiniciar el contador de objetos recolectados
+            ObjetoRecolectable.ReiniciarContador();
+            
             Destroy(gameObject);
             SceneManager.LoadScene("menuGameOver");
         }
@@ -146,7 +178,7 @@ public class NewBehaviourScript : MonoBehaviour
         vida -= daño;
         if (vida < 1)
         {
-              Physics2D.IgnoreLayerCollision(6, 7, true);
+            Physics2D.IgnoreLayerCollision(6, 7, true);
         }
     }
 
@@ -171,5 +203,4 @@ public class NewBehaviourScript : MonoBehaviour
             spriteRenderer.color = colorOriginal;
         }
     }
-    
 }

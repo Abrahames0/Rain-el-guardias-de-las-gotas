@@ -13,8 +13,9 @@ public class Vida : MonoBehaviour
             NewBehaviourScript jugador = other.GetComponent<NewBehaviourScript>();
             if (jugador != null)
             {
-                // jugador.RecuperarVida(cantidadRecuperacion);
-                Destroy(gameObject);
+                jugador.RecuperarVida(cantidadRecuperacion); // Recupera vida
+                Debug.Log($"El jugador recuperó {cantidadRecuperacion} de vida.");
+                Destroy(gameObject); // Elimina el objeto de vida tras recogerlo
             }
         }
     }

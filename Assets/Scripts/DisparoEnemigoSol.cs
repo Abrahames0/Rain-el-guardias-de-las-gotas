@@ -4,14 +4,24 @@ public class DisparoEnemigoSol : MonoBehaviour
 {
     public GameObject projectilePrefab; // Prefab del proyectil
     public Transform firePoint; // Punto desde donde se disparan los proyectiles
-    public Transform player; // Asigna el jugador desde el Inspector
+    private Transform player; // Transform del jugador
     public float shootInterval = 2f; // Tiempo entre disparos
+    public float projectileSpeed = 5f; // Velocidad del proyectil
 
     private float nextShootTime;
 
+    void Start()
+    {
+        BuscarJugador();
+    }
+
     void Update()
     {
-        if (player == null) return;
+        if (player == null)
+        {
+            BuscarJugador(); // Buscar al jugador si aún no está asignado
+            return;
+        }
 
         // Apuntar hacia el jugador
         Vector2 direction = (player.position - transform.position).normalized;
@@ -26,11 +36,32 @@ public class DisparoEnemigoSol : MonoBehaviour
         }
     }
 
+    public void AsignarJugador(Transform jugadorTransform)
+    {
+        player = jugadorTransform;
+        Debug.Log("Jugador asignado al enemigo Sol (Disparador): " + jugadorTransform.name);
+    }
+
+    private void BuscarJugador()
+    {
+        // Buscar al jugador por la etiqueta "Player"
+        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
+        if (jugador != null)
+        {
+            player = jugador.transform;
+            Debug.Log("Jugador asignado al enemigo Sol (Disparador): " + jugador.name);
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró un jugador con la etiqueta 'Player'.");
+        }
+    }
+
     void Shoot(Vector2 direction)
     {
         // Crear el proyectil y darle dirección
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().velocity = direction * 3f; // Velocidad del proyectil
-        Destroy(projectile, 2f); // Destruir el proyectil después de 5 segundos
+        projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed; // Velocidad del proyectil
+        Destroy(projectile, 2f); // Destruir el proyectil después de 2 segundos
     }
 }

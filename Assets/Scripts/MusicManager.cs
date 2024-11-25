@@ -9,6 +9,8 @@ public class MusicManager : MonoBehaviour
     public AudioClip scene3Clip;
     public AudioClip scene4Clip;
     public AudioClip scene5Clip;
+    public AudioClip scene6Clip;
+
 
     private AudioSource audioSource;
 
@@ -36,7 +38,9 @@ public class MusicManager : MonoBehaviour
             case 0:
             case 1:
             case 2:
-            case 8:
+            case 4:
+            case 6:
+            case 9:
                 if (audioSource.clip != scene0to2And6Clip)
                 {
                     audioSource.clip = scene0to2And6Clip;
@@ -64,6 +68,13 @@ public class MusicManager : MonoBehaviour
                     audioSource.Play();
                 }
                 break;
+            case 8:
+            if (audioSource.clip != scene6Clip)
+            {
+                audioSource.clip = scene6Clip;
+                audioSource.Play();
+            }
+            break;
         }
     }
 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8539217476198978992}
   - component: {fileID: 9171649834730512012}
   - component: {fileID: -4309996230693274683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rait (personaje)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -197,11 +197,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 100
   vidaMaxima: 100
-  velocidad: 1.3
+  velocidad: 1.5
   barraVida: {fileID: 0}
-  fuerzaSalto: 5
+  fuerzaSalto: 5.1
   saltoSonido: {fileID: 8300000, guid: 2ebf2421dddc15a45b7fc6ae8197b1c0, type: 3}
-  longitudRaycast: 0.3
+  longitudRaycast: 0.5
   capaSuelo:
     serializedVersion: 2
     m_Bits: 8

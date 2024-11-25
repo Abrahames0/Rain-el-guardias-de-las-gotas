@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ObjetoRecolectable : MonoBehaviour
 {
     public static int objetosRecolectados = 0; // Contador de objetos recolectados
     public Text marcadorTexto;                 // Referencia al texto de la UI
-    private static int totalObjetos;  
-    
-    [SerializeField] private AudioClip objetoRecolectado;         // Total de objetos en la escena
+    public static int totalObjetos;            // Total de objetos en la escena
+
+    [SerializeField] private AudioClip objetoRecolectado;
+    private bool recolectado = false;
 
     private void Start()
     {
@@ -19,20 +21,38 @@ public class ObjetoRecolectable : MonoBehaviour
         // Actualizar el marcador al inicio
         ActualizarMarcador();
     }
-private bool recolectado = false;
 
-private void OnTriggerEnter2D(Collider2D other)
-{
-    if (other.CompareTag("Player") && !recolectado)
+    private void OnEnable()
     {
-        recolectado = true;
-        ControladorSonido.Instance.EjecutarSonido(objetoRecolectado); // Evita que el objeto sea recolectado más de una vez
-        objetosRecolectados++;
-        ActualizarMarcador();
-        Destroy(gameObject);
+        // Suscribirse al evento de carga de nivel
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-}
 
+    private void OnDisable()
+    {
+        // Cancelar suscripción al evento de carga de nivel
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Reinicia el contador al cargar un nuevo nivel
+        ReiniciarContador();
+        // Actualiza el total de objetos del nuevo nivel
+        totalObjetos = GameObject.FindGameObjectsWithTag("Objeto").Length;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !recolectado)
+        {
+            recolectado = true;
+            ControladorSonido.Instance.EjecutarSonido(objetoRecolectado); // Evita que el objeto sea recolectado más de una vez
+            objetosRecolectados++;
+            ActualizarMarcador();
+            Destroy(gameObject);
+        }
+    }
 
     private void ActualizarMarcador()
     {
@@ -41,5 +61,11 @@ private void OnTriggerEnter2D(Collider2D other)
         {
             marcadorTexto.text = $"Objetivo: {objetosRecolectados}/{totalObjetos}";
         }
+    }
+
+    public static void ReiniciarContador()
+    {
+        // Reinicia el contador de objetos recolectados
+        objetosRecolectados = 0;
     }
 }

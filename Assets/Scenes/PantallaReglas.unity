@@ -179,36 +179,32 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Objetivo Principal:\nProtege y recolecta tantas gotas de lluvia como puedas
+  m_text: "Objetivo Principal:  \r\nProtege y recolecta tantas nubes como puedas
     antes de que se evaporen o sean destruidas por obst\xE1culos. \xA1Eres el guardi\xE1n
-    encargado de salvar la lluvia!\n\nMovimientos del Guardi\xE1n:\nUtiliza las flechas
-    del teclado o el joystick (si juegas con un mando) para mover a Rain por el escenario.\nSalta
-    para esquivar obst\xE1culos y recoge gotas que se encuentran en plataformas.\n\nRecolecci\xF3n
-    de Gotas:\nAlgunas gotas est\xE1n escondidas o requieren resolver peque\xF1os
-    acertijos para ser alcanzadas.\nLas gotas aparecen al azar en el mapa, y debes
-    alcanzarlas antes de que desaparezcan.\nCada gota recogida suma puntos, y recoger
-    una serie de gotas seguidas otorga un multiplicador de puntuaci\xF3n.\n\nObst\xE1culos
-    y Peligros:\nEvita obst\xE1culos como rayos de sol, fuertes vientos y criaturas
-    que intentan evaporar o robar las gotas.\nSi tocas un obst\xE1culo, perder\xE1s
-    parte de tu energ\xEDa y algunas gotas recolectadas.\n\nEnerg\xEDa del Guardi\xE1n:\nRain
-    tiene un medidor de energ\xEDa. La energ\xEDa disminuye cuando choca con un obst\xE1culo,
-    pero puedes recargarla recolectando gotas especiales o al encontrar \"zonas de
-    reposo\".\nSi tu energ\xEDa se agota por completo, perder\xE1s la partida y deber\xE1s
-    reiniciar el nivel.\n\nGotas Especiales:\nGotas Doradas: Proporcionan habilidades
-    especiales temporales, como la capacidad de moverte m\xE1s r\xE1pido o volverte
-    invulnerable por un tiempo limitado.\nGotas de Tiempo: Extienden el tiempo disponible
-    para completar el nivel actual.\nGotas Curativas: Restauran la energ\xEDa de
-    Rain y lo ayudan a mantenerse en pie.\n\nZonas Seguras:\nBusca \"zonas seguras\"
-    donde las gotas se acumulan. Aqu\xED puedes descansar un momento y planificar
-    tu siguiente movimiento sin perder gotas.\n\nNiveles y Dificultad:\nCada nivel
-    tiene diferentes desaf\xEDos. A medida que avanzas, los niveles se vuelven m\xE1s
-    complicados, con m\xE1s obst\xE1culos y gotas m\xE1s dif\xEDciles de recolectar.\nAlgunos
-    niveles requerir\xE1n salvar un n\xFAmero espec\xEDfico de gotas para avanzar
-    al siguiente.\n\nPuntuaci\xF3n y Progreso:\nTu puntuaci\xF3n final depende de
-    cu\xE1ntas gotas lograste recolectar,  y si encontraste gotas especiales.\nGuarda
-    tu progreso despu\xE9s de cada nivel superado para desbloquear contenido y mejorar
-    las habilidades de Rain.\n\nConsejo del Guardi\xE1n:\nMantente siempre en movimiento
-    y atento a los cambios clim\xE1ticos. \xA1La lluvia no espera!"
+    encargado de salvar la lluvia!\r\n\r\nMovimientos del Guardi\xE1n:  \r\n- Usa
+    las flechas del teclado o el joystick (si juegas con un mando) para mover a Rain
+    por el escenario.  \r\n- Salta para esquivar obst\xE1culos y recoger nubes que
+    se encuentran en plataformas elevadas.\r\n\r\nRecolecci\xF3n de Nubes:\n- Algunas
+    nubes est\xE1n ocultas o requieren resolver peque\xF1os acertijos para ser alcanzadas. 
+    \r\n- Las nubes aparecen aleatoriamente en el mapa, y debes alcanzarlas antes
+    de que desaparezcan.  \r\n- Cada nube recolectada suma puntos. Recoger varias
+    nubes de forma consecutiva aumenta un multiplicador de puntuaci\xF3n.\r\n\r\nObst\xE1culos
+    y Peligros:  \r\n- Evita obst\xE1culos como rayos de sol, fuertes vientos y criaturas
+    que intentan evaporar o robar las nubes.  \r\n- Si tocas un obst\xE1culo, perder\xE1s
+    parte de tu energ\xEDa y algunas nubes recolectadas.\r\n\r\nEnerg\xEDa del Guardi\xE1n:\n-
+    Rain tiene un medidor de energ\xEDa que disminuye al chocar con un obst\xE1culo. 
+    \r\n- Puedes recargar energ\xEDa recolectando gotas.  \r\n- Si tu energ\xEDa
+    se agota por completo, perder\xE1s la partida y deber\xE1s reiniciar el nivel.\r\n\r\nGotas:\r\n-
+    Gotas Curativas: Restauran la energ\xEDa de Rain.\r\n\r\n\r\nNiveles y Dificultad:
+    \r\n- Cada nivel presenta nuevos desaf\xEDos. A medida que avanzas, los niveles
+    se vuelven m\xE1s complejos, con obst\xE1culos adicionales y nubes m\xE1s dif\xEDciles
+    de recolectar.  \r\n- Debes recolectar un n\xFAmero espec\xEDfico de nubes para
+    poder avanzar al siguiente nivel.\r\n\r\nPuntuaci\xF3n y Progreso:  \r\n- Tu
+    puntuaci\xF3n final depende del n\xFAmero de nubes recolectadas y de las gotas
+    curativas encontradas.  \r\n- Guarda tu progreso despu\xE9s de cada nivel para
+    desbloquear contenido y mejorar las habilidades de Rain.\r\n\r\nConsejo del Guardi\xE1n:
+    \r\n- Mantente siempre en movimiento y atento a los cambios clim\xE1ticos. \xA1La
+    lluvia no espera!\r\n\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -235,8 +231,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -580,7 +576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -24.640015, y: 15.786995}
+  m_AnchoredPosition: {x: -24.640015, y: 15.786987}
   m_SizeDelta: {x: -765.681, y: -296.39798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193490197
