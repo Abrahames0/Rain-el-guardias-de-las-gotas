@@ -17,11 +17,12 @@ public class BalaEnemigo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        ControladorSonido.Instance.EjecutarSonido(dañoPersonaje);
+        
         if(other.TryGetComponent(out NewBehaviourScript playerControler))
         {
             
-            playerControler.TomarDañoPorDisparo(daño);   
+            playerControler.TomarDañoPorDisparo(daño);  
+            ControladorSonido.Instance.EjecutarSonido(dañoPersonaje); 
         }
     
     }   
